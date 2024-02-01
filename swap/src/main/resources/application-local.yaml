@@ -1,0 +1,17 @@
+# Cardano Node
+cardano:
+  node:
+    host: delta.relay.easy1staking.com
+    socatPort: 30100
+
+ogmios.url: ws://delta.relay.easy1staking.com:31337
+
+wallet:
+  mnemonic: ""
+
+blockfrost:
+  key: ""
+
+swap:
+  transaction:
+    submitTo: local

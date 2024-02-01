@@ -1,0 +1,22 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+# Cardano Node
+cardano:
+  node:
+    host: gamma.relay.easy1staking.com
+    socatPort: 30100
+
+ogmios.url: ws://gamma.relay.easy1staking.com:31337
+
+wallet:
+  mnemonic: ""
+
+blockfrost:
+  key: ""
+
+swap:
+  transaction:
+    submit: true
+    submitTo: local

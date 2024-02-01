@@ -1,0 +1,44 @@
+# SPRING_PROFILES_ACTIVE=default|socket
+# default: uses socat cardano node configuration
+# socket: uses cardano node socket configuration
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+# Cardano Node
+cardano:
+  node:
+    # Default configuration (no SPRING_PROFILES_ACTIVE specified OR SPRING_PROFILES_ACTIVE=default,...) needs this property set
+    socket:
+      path: ${CARDANO_NODE_SOCKET_PATH:/ipc/node.socket}
+    # Socat Configuration with w/ SPRING_PROFILES_ACTIVE=socat,...
+    host: ${CARDANO_NODE_HOST:cardano-node-delta}
+    socatPort: ${CARDANO_NODE_SOCAT_PORT:3001}
+  relays: ${CARDANO_RELAYS:}
+
+
+wallet:
+  # 24 words mnemonic
+  mnemonic: ${WALLET_MNEMONIC}
+  # Optional collateral setting. If not specified bot will pick up first utxo that contains between 5 and 10 ada, boundaries included.
+  collateral:
+    hash: ${WALLET_COLLATERAL_HASH:#{null}}
+    index: ${WALLET_COLLATERAL_INDEX:#{null}}
+
+blockfrost:
+  # Can put anything here as it's not used
+  url: ${BLOCKFROST_URL:https://blockfrost-api.mainnet.dandelion.blockwarelabs.io}
+  key: ${BLOCKFROST_KEY:password}
+
+ogmios.url: ${OGMIOS_URL:ws://cardano-node-delta:1337}
+
+submitApi.url: ${SUBMIT_API_URL:http://cardano-submit-api}
+
+swap:
+  transaction:
+    # Whether or not submitting the TX (useful mostly in dev during experimenting)
+    submit: ${SWAP_TRANSACTION_SUBMIT:true}
+    # submitTo: local|ogmios|submitApi
+    # local is usually much faster, but no human-readable errors
+    # ogmios is much slower, but errors are in plain english
+    submitTo: ${SWAP_TRANSACTION_SUBMIT_TO:local}
