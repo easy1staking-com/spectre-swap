@@ -1,10 +1,10 @@
 # Cardano Node
 cardano:
   node:
-    host: delta.relay.easy1staking.com
+    host: ""
     socatPort: 30100
 
-ogmios.url: ws://delta.relay.easy1staking.com:31337
+ogmios.url: ""
 
 wallet:
   mnemonic: ""
